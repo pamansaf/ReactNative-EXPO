@@ -1,0 +1,53 @@
+Tailwind CSS in EXPO
+===============================
+
+npx create-expo-app@latest --template blank@latest
+
+
+https://www.nativewind.dev/v2/getting-started/installation#1-install-nativewind
+
+1. Install NativeWind
+
+# npm install nativewind@2.0.11
+# npm install --save-dev tailwindcss@3.3.2
+
+
+------------------------------------
+
+2. Setup Tailwind CSS
+
+# npx tailwindcss init
+
+(to create a tailwind.config.js file.)
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // NOTE: Update this to include the paths to all of your component files.
+  content: ["./App.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+------------------------------------
+
+buat babel, metro, eslintrc === npx expo customize
+
+3. Add the Babel preset  (babel.config.js)
+
+
+module.exports = function (api) {
+	api.cache(true);
+  	return {
+		presets: ['babel-preset-expo'],
+		plugins: ['nativewind/babel'],
+	};
+};
+
+
+------------------------------------
+
+npx expo start -c
+
+

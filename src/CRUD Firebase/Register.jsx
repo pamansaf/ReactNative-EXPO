@@ -9,8 +9,9 @@ import {
 import React, { useState } from "react";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
+import { setLocalStorage } from "../../Storage";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -26,9 +27,15 @@ const Register = () => {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed up
         const user = userCredential.user;
+        await updateProfile(user, {
+          displayName: name,
+        });
+
+        await setLocalStorage("userDetail", user);
+
         ToastAndroid.show("Registrasi berhasl", ToastAndroid.BOTTOM);
         navigation.replace("Login");
         // ...

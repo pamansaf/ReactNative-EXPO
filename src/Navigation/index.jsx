@@ -12,13 +12,14 @@ import { TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import UpdateSatu from "../CRUD Satu/UpdateSatu";
+import CrudSQLite from "../SQLite";
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator initialRouteName="CrudSatu">
+    <Stack.Navigator initialRouteName="CrudSQLite">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -45,6 +46,9 @@ const Navigation = () => {
       <Stack.Screen name="AddSatu" component={AddSatu} />
       <Stack.Screen name="UpdateSatu" component={UpdateSatu} />
       <Stack.Screen name="Product" component={Product} />
+
+      {/* SQLite */}
+      <Stack.Screen name="CrudSQLite" component={CrudSQLite} />
     </Stack.Navigator>
   );
 };

@@ -4,6 +4,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import { setLocalStorage } from "../../Storage";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -16,10 +17,11 @@ const Login = () => {
       return;
     }
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigation.replace("Home");
+        await setLocalStorage("userDetail", user);
+        navigation.replace("CrudSatu");
 
         // ...
       })

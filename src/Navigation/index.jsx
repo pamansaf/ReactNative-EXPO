@@ -13,6 +13,13 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import UpdateSatu from "../CRUD Satu/UpdateSatu";
 import CrudSQLite from "../SQLite";
+import CRUDFirebaseDua from "../CRUD Firebase Dua";
+import AsyncStorageDua from "../AsyncStorage Dua";
+import Dictionary from "../Dictionary";
+import Calculator from "./../Calculator/index";
+import CalculatorDua from "../CalculatorDua";
+import Contact from "../AsyncStorage/Contact";
+import CreateContact from "../AsyncStorage/Contact/CreateContact";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,8 +54,29 @@ const Navigation = () => {
       <Stack.Screen name="UpdateSatu" component={UpdateSatu} />
       <Stack.Screen name="Product" component={Product} />
 
+      {/* AsyncStorage Dua */}
+      <Stack.Screen name="AsyncStorageDua" component={AsyncStorageDua} />
+
       {/* SQLite */}
       <Stack.Screen name="CrudSQLite" component={CrudSQLite} />
+
+      {/* CRUD Firebase Dua */}
+      <Stack.Screen name="CRUDFirebaseDua" component={CRUDFirebaseDua} />
+
+      {/* Dictionary */}
+      <Stack.Screen name="Dictionary" component={Dictionary} />
+
+      {/* Calculator */}
+      <Stack.Screen name="Calculator" component={Calculator} />
+      <Stack.Screen name="CalculatorDua" component={CalculatorDua} />
+
+      {/* Kartu Peserta */}
+      <Stack.Screen
+        name="Contact"
+        component={Contact}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="CreateContact" component={CreateContact} />
     </Stack.Navigator>
   );
 };
